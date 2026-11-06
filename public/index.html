@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <form id="form"> 
+        <label for="text">Název úkolu:</label>
+        <input type="text" id="text" name="text">
+        <label for="priority">Priorita:</label>
+        <select name="priority" id="priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+        </select>
+        <button type="submit" id="button">Vytvořit</button>
+    </form>
+    <p id="message"></p>
+    <ul id="todoList"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
