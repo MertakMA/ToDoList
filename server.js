@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 app.get('/api/todos', async(req, res) => {
 try{
-    const result = await Task.find().sort({_id: - 1 });
+    const result = await Task.find().sort({_id: -1 });
     res.json(result);
 }catch (error) {
         console.error('Error fetching todos:', error);
