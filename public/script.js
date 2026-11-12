@@ -22,6 +22,22 @@ async function loadTodos(){
     }
 }
 
+async function deleteTodo(id){
+    try{
+        const res = await fetch("/api/todos/" + id, {
+            method: "DELETE",
+        }
+        );
+        if(!res.ok){
+            throw new Error('Internal server error');
+        }
+        await loadTodos();
+    } catch(error){
+        message.textContent = error.message;
+        console.error(error);
+    }
+}
+
 function renderTodos(todos){
     todoList.textContent = '';
     if(todos.length === 0){
@@ -29,7 +45,11 @@ function renderTodos(todos){
     }
     for(const todo of todos){
         const li = document.createElement('li');
+        const button = document.createElement('button');
+        button.textContent = "Smazat";
+        button.addEventListener('click', () => deleteTodo(todo._id));
         li.textContent = `${todo.text} (${todo.priority})`;
+        li.appendChild(button);
         todoList.appendChild(li);
     }
 }

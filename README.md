@@ -89,7 +89,7 @@ todoList/
 |---|---|---|---|
 | `GET` | `/api/todos` | vrátí všechny úkoly | – |
 | `POST` | `/api/todos` | vytvoří nový úkol | `{ "text": "Koupit mléko", "priority": "high" }` |
-
+| `DELETE` | `/api/todos/:id` | smaže úkol dle parametru id | – |
 Odpovědi serveru:
 
 - `200`: úspěšné načtení úkolů

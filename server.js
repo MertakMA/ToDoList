@@ -43,6 +43,21 @@ app.post('/api/todos', async (req, res) => {
     }
 })
 
+app.delete('/api/todos/:id', async (req,res) => {
+    const id = req.params.id;
+    try{
+        const deleted = await Task.findByIdAndDelete(id);
+        if(deleted === null){
+            res.status(404).json({ error: 'Todo not found' });
+            return;
+        }
+        res.status(204).json(deleted);
+    } catch (error) {
+        console.error('Error deleting todo:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+})
+
 async function startServer() {
     try{
         await mongoose.connect(process.env.MONGODB_URI);
